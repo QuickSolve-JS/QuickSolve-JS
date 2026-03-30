@@ -1,18 +1,67 @@
 name: Create Issue Branch
 
+
+
 on:
+
   issues:
+
     types: [assigned]
 
+
+
 jobs:
+
   create_branch:
+
     runs-on: ubuntu-latest
+
     permissions:
+
       contents: write
+
       issues: write
+
       pull-requests: write
+
     steps:
+
       - name: Create branch for the issue
+
+        id: create_branch
+
         uses: robvanderleek/create-issue-branch@main
+
         env:
+
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+      - name: Add instructions as a comment
+
+        uses: actions/github-script@v6
+
+        with:
+
+          script: |
+
+            const branchName = "issue-${{ github.event.issue.number }}"; 
+
+            const issueNumber = context.issue.number;
+
+            const message = `🚀 **Branch Created!** \n\nTo start working on this issue, use the following commands:\n\n\`\`\`bash\ngit fetch origin\ngit checkout ${branchName}\n\`\`\``;
+
+            
+
+            github.rest.issues.createComment({
+
+              issue_number: issueNumber,
+
+              owner: context.repo.owner,
+
+              repo: context.repo.repo,
+
+              body: message
+
+            });
