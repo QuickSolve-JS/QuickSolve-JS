@@ -19,12 +19,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add instructions as a comment
-        if: success() 
+        if: success()
         uses: actions/github-script@v6
         with:
           script: |
-            // GitHub Action එකෙන් auto-generate කරපු branch name එක මෙතනින් ගන්නවා
-            const branchName = "issue-${{ github.event.issue.number }}-${{ github.event.issue.title }}".replace(/ /g, '_');
+            const rawTitle = "${{ github.event.issue.title }}";
+            const cleanTitle = rawTitle.replace(/[^a-zA-Z0-9]/g, '_').replace(/_{2,}/g, '_');
+
+            const branchName = `issue-${{ github.event.issue.number }}-${cleanTitle}`;
             
             const message = `🚀 **Branch Created!** \n\nTo start working on this issue, use the following commands:\n\n\`\`\`bash\ngit fetch origin\ngit checkout ${branchName}\n\`\`\``;
             
