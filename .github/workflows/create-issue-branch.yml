@@ -24,11 +24,12 @@ jobs:
         with:
           script: |
             const rawTitle = "${{ github.event.issue.title }}";
-            
+            // Spaces -> Underscores (_)
+            // Special characters (:, #, etc.) -> Removed
             const cleanTitle = rawTitle
               .replace(/[^a-zA-Z0-9 ]/g, '') 
-              .trim()                       
-              .replace(/\s+/g, '-');         
+              .trim()                      
+              .replace(/\s+/g, '_');         
             
             const branchName = `issue-${{ github.event.issue.number }}-${cleanTitle}`;
             
