@@ -1,67 +1,36 @@
 name: Create Issue Branch
 
-
-
 on:
-
   issues:
-
     types: [assigned]
 
-
-
 jobs:
-
   create_branch:
-
     runs-on: ubuntu-latest
-
     permissions:
-
       contents: write
-
       issues: write
-
       pull-requests: write
-
     steps:
-
       - name: Create branch for the issue
-
-        id: create_branch
-
+        id: create_issue_branch 
         uses: robvanderleek/create-issue-branch@main
-
         env:
-
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-
       - name: Add instructions as a comment
-
+        if: success() 
         uses: actions/github-script@v6
-
         with:
-
           script: |
-
-            const branchName = "issue-${{ github.event.issue.number }}-Feature_Add_Percentage-based_Discount_Support_to_Calculation_Engine"; 
-
+            // GitHub Action එකෙන් auto-generate කරපු branch name එක මෙතනින් ගන්නවා
+            const branchName = "issue-${{ github.event.issue.number }}-${{ github.event.issue.title }}".replace(/ /g, '_');
             
-
             const message = `🚀 **Branch Created!** \n\nTo start working on this issue, use the following commands:\n\n\`\`\`bash\ngit fetch origin\ngit checkout ${branchName}\n\`\`\``;
-
             
-
             github.rest.issues.createComment({
-
               issue_number: context.issue.number,
-
               owner: context.repo.owner,
-
               repo: context.repo.repo,
-
               body: message
-
             });
