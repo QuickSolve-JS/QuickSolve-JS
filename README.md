@@ -9,7 +9,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-8.1+-777bb4.svg" alt="PHP Version">
-  <img src="https://img.shields.io/badge/Laravel-9.x%20|%2010.x%20|%2011.x%20|%2012.x-ff2d20.svg" alt="Laravel Version">
+  <img src="https://img.shields.io/badge/Laravel-9.x%20|%2010.x%20|%2011.x%20|%2012.x%20|%2013.x-ff2d20.svg" alt="Laravel Version">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
 </p>
 
