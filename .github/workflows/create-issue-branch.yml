@@ -46,9 +46,9 @@ jobs:
 
           script: |
 
-            const issueTitle = context.payload.issue.title.replace(/[^a-zA-Z0-9]/g, '_');
+            const branchName = "issue-${{ github.event.issue.number }}-Feature_Add_Percentage-based_Discount_Support_to_Calculation_Engine"; 
 
-            const branchName = `issue-${context.issue.number}-${issueTitle}`;            
+            
 
             const message = `🚀 **Branch Created!** \n\nTo start working on this issue, use the following commands:\n\n\`\`\`bash\ngit fetch origin\ngit checkout ${branchName}\n\`\`\``;
 
