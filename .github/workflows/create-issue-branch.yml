@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Create branch for the issue
-        id: create_issue_branch 
+        id: create_branch 
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -23,15 +23,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const rawTitle = "${{ github.event.issue.title }}";
-            // Spaces -> Underscores (_)
-            // Special characters (:, #, etc.) -> Removed
-            const cleanTitle = rawTitle
-              .replace(/[^a-zA-Z0-9 ]/g, '') 
-              .trim()                      
-              .replace(/\s+/g, '_');         
-            
-            const branchName = `issue-${{ github.event.issue.number }}-${cleanTitle}`;
+            const branchName = "${{ steps.create_branch.outputs.branchName }}";
             
             const message = `🚀 **Branch Created!** \n\nTo start working on this issue, use the following commands:\n\n\`\`\`bash\ngit fetch origin\ngit checkout ${branchName}\n\`\`\``;
             
