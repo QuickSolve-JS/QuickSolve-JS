@@ -1,1 +1,0 @@
-{"version":2,"defects":{"QuickSolve\\Calc\\Tests\\Unit\\CalculationTest::test_it_can_calculate_tax_correctly":7},"times":{"QuickSolve\\Calc\\Tests\\Unit\\CalculationTest::test_it_can_calculate_tax_correctly":0.001,"QuickSolve\\Calc\\Tests\\Unit\\CalculationTest::test_it_can_apply_discount_correctly":0}}
