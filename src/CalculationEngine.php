@@ -3,7 +3,8 @@
 namespace QuickSolve\Calc;
 
 use QuickSolve\Calc\Actions\AddTax;
-use QuickSolve\Calc\Actions\ApplyDiscount;
+use QuickSolve\Calc\Actions\ApplyFlatDiscount;
+use QuickSolve\Calc\Actions\ApplyPercentageDiscount;
 
 /**
  * Class CalculationEngine
@@ -22,10 +23,14 @@ class CalculationEngine
     /**
      * CalculationEngine constructor.
      * @param AddTax $addTaxAction
-     * @param ApplyDiscount $applyDiscountAction
+     * @param ApplyFlatDiscount $applyDiscountAction
      */
 
-    public function __construct(protected AddTax $addTaxAction, protected ApplyDiscount $applyDiscountAction){}
+    public function __construct(
+        protected AddTax $addTaxAction,
+        protected ApplyFlatDiscount $applyDiscountAction,
+        protected ApplyPercentageDiscount $applyPercentageDiscountAction
+    ){}
 
     /**
      * Set the initial base amount for the calculation.
@@ -57,9 +62,15 @@ class CalculationEngine
      * @return $this
      */
 
-    public function applyDiscount(float $amount): self
+    public function applyFlatDiscount(float $amount): self
     {
         $this->result = $this->applyDiscountAction->execute($this->result, $amount);
+        return $this;
+    }
+
+    public function applyPercentageDiscount(float $amount): self
+    {
+        $this->result = $this->applyPercentageDiscountAction->execute($this->result, $amount);
         return $this;
     }
 

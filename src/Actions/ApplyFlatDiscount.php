@@ -4,7 +4,7 @@ namespace QuickSolve\Calc\Actions;
 
 use QuickSolve\Calc\Contracts\CalculatorAction;
 
-class ApplyDiscount implements CalculatorAction
+class ApplyFlatDiscount implements CalculatorAction
 {
 
     public function execute(float $currentValue, float $inputValue): float
