@@ -2,7 +2,7 @@ name: Create Issue Branch
 
 on:
   issues:
-    types: [opened, reopened]
+    types: [assigned] 
 
 jobs:
   create_branch:
