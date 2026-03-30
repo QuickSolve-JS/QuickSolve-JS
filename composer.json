@@ -1,0 +1,29 @@
+{
+  "name": "quicksolve/laravel-calc",
+  "description": "High-precision calculation engine for Laravel POS.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "QuickSolve\\Calc\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "QuickSolve\\Calc\\CalcServiceProvider"
+      ],
+      "aliases": {
+        "QuickSolve": "QuickSolve\\Calc\\Facades\\QuickSolve"
+      }
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0",
+    "ext-bcmath": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^13.0"
+  }
+}
