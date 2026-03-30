@@ -2,11 +2,15 @@ name: Create Issue Branch
 
 on:
   issues:
-    types: [assigned] 
+    types: [assigned]
 
 jobs:
   create_branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - name: Create branch for the issue
         uses: robvanderleek/create-issue-branch@main
