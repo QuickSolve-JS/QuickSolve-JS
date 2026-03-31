@@ -44,7 +44,7 @@ use QuickSolve\Calc\Facades\QuickSolve;
 // Basic calculation
 $total = QuickSolve::setAmount(1000)
             ->addTax(15)        // Adds 15% Tax
-            ->applyDiscount(50) // Deducts flat 50
+            ->applyFlatDiscount(50) // Deducts flat 50
             ->get();            // Returns 1100.00
 
 // Formatting for display
