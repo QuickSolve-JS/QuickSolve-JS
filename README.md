@@ -75,5 +75,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 -----
 
 <p align="center"\>
-Developed with ❤️ by \<b\>Niduranga Jayarathna</b\>
+Developed with ❤️ by </b\>Niduranga Jayarathna</b\>
 </p\>
