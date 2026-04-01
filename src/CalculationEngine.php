@@ -68,6 +68,12 @@ class CalculationEngine
         return $this;
     }
 
+    /**
+     * Apply a percentage discount amount to the current result.
+     * @param float $amount
+     * @return $this
+     */
+
     public function applyPercentageDiscount(float $amount): self
     {
         $this->result = $this->applyPercentageDiscountAction->execute($this->result, $amount);
